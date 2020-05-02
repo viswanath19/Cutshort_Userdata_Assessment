@@ -1,0 +1,42 @@
+# Copy this file to .env and replace the credentials with
+# your own before starting the app.
+
+# Watson Assistant
+ASSISTANT_APIKEY=DqaFYP5mSLOv3COlu8GNyRpilfbLT28ymx3FftTFGf_Q
+ASSISTANT_URL=https://gateway-lon.watsonplatform.net/assistant/api
+ASSISTANT_ID=086903cc-5fec-4780-a0b9-b9f3329d7b73
+
+# Optionally, use a non-default skill by specifying your own workspace ID or name.
+# WORKSPACE_ID=<add_assistant_workspace_id>
+# WORKSPACE_NAME=<add_assistant_workspace_name>
+
+# Watson Discovery
+DISCOVERY_APIKEY=7gE3L34Ycf1PikJpzvSumV_WYbv7yNFGxd_gqxuQuLMH
+DISCOVERY_URL=https://gateway-lon.watsonplatform.net/discovery/api
+
+# Optionally, use a non-default environment and collection
+# by specifying your IDs.
+# DISCOVERY_ENVIRONMENT_ID=<add_discovery_environment_id>
+# DISCOVERY_COLLECTION_ID=<add_discovery_collection_id>
+
+# Watson Natural Language Understanding
+NATURAL_LANGUAGE_UNDERSTANDING_APIKEY=wYD1MYWrcHMYhvgxM6PjgW5tCLrpmPD2DoBpW0Qc_Qvn
+NATURAL_LANGUAGE_UNDERSTANDING_URL=https://gateway-lon.watsonplatform.net/natural-language-understanding/api
+
+# Watson Tone Analyzer
+TONE_ANALYZER_APIKEY=_-FXojWLKYJs8jEAuFy4uLz6iVxfO-tBn3Oa8t4QLtfD
+TONE_ANALYZER_URL=https://gateway-lon.watsonplatform.net/assistant/api
+
+# Customize as needed
+export CLOUDANT_IMAGE_DATABASE="images"
+export CLOUDANT_TAGS_DATABASE="tags"
+export CLOUDANT_USERNAME="67d82e47-8f82-4945-9209-bd220b2d7be3-bluemix"
+export CLOUDANT_PASSWORD="10db3f279df241cbd2a9692a6a412f80bf3cadba00bf8324a1cf6f159c00a019"
+export WATSON_VISUAL_APIKEY="tfE_0_iAlhV4XqFjkt21GoLfZ3MhRS0T9Vi7Q8YQWFf0"
+
+# Run locally on a non-default port (default is 3000)
+# PORT=3000
+
+# Set LOCALE=en_IN for the original India bank version.
+# LOCALE=en_IN
+

@@ -1,0 +1,54 @@
+{
+  "name": "watson-banking-chatbot",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "npm run unit && npm run eslint && npm run jshint",
+    "jshint": "jshint public",
+    "eslint": "eslint *.js lib test",
+    "unit": "istanbul cover _mocha test/unit -- -R spec"
+  },
+  "dependencies": {
+    "@cloudant/cloudant": "^4.2.4",
+    "body-parser": "^1.19.0",
+    "cfenv": "^1.2.2",
+    "cloudant": "^1.10.0-NOTICE",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "firebase": "^7.6.2",
+    "formidable": "^1.2.1",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "ibm-cloud-sdk-core": "^2.0.4",
+    "ibm-watson": "^4.5.4",
+    "jsdom": "^16.2.0",
+    "localStorage": "^1.0.4",
+    "multer": "^1.4.2",
+    "mysql": "^2.17.1",
+    "numeral": "^2.0.6",
+    "request": "^2.88.2",
+    "sessionstorage": "^0.1.0"
+  },
+  "repository": "github:IBM/watson-banking-chatbot",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "istanbul": "^0.4.5",
+    "jshint": "^2.10.3",
+    "jsondiffpatch": "^0.3.11",
+    "mocha": "^6.2.2",
+    "prettier": "^1.19.0",
+    "sinon": "^7.5.0",
+    "sinon-test": "^2.4.0"
+  }
+}

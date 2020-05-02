@@ -1,0 +1,362 @@
+<!--
+ * Copyright 2017 IBM Corp. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the 'License'); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+-->
+<html>
+
+<head>
+	<base href="/">
+	<title>User Details</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta property="og:image" content="conversation.svg" />
+	<meta property="og:title" content="Conversation Chat Simple" />
+	<meta property="og:description"
+		content="Sample application that shows how to use the Conversation API to identify user intents" />
+	<link rel="shortcut icon" href="fav.png" type="image/x-icon">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css"/>
+  <!-- CSS Files -->
+	<link rel="stylesheet" href="css/app1.css">
+	<style type="text/css">		
+		body {
+			padding-top: 3.5rem;
+		}
+	</style>
+	<style type="text/css">
+    .errspan {
+        float: right;
+        margin-right: 6px;
+        margin-top: -25px;
+        position: relative;
+        z-index: 2;
+        color: black;
+    }
+	
+
+</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-main">
+		<a class="navbar-brand" href="#">PIE</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<!--<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Services</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="#">Insurance</a>
+						<a class="dropdown-item" href="#">Support Services</a>
+						<a class="dropdown-item" href="#">Our Offerings</a>
+					</div>
+				</li>-->
+			</ul>
+			<!--<ul class="navbar-nav navbar-right">
+				<li class="nav-item">
+					<a class="nav-link" href="./adminlogin.html">Admin</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="./login.html">Login</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Register</a>
+				</li>
+			</ul>-->
+		</div>
+	</nav>
+
+	<main role="main">
+	<!--<img id="imageid" src="assets/img/cg_ibm.png" style="margin-top:50px;max-width:200px;height:auto;float:right;padding-right:20px;padding-top:10px;">
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+		<div class="jumpbox">
+		
+			<div class="container">
+				<h4 class="display-6">Welcome to the User Datastore</h4>
+				<p>We help with a datastore and a capability to create and edit the user's assigned with a role and store in a datastore</p>
+				<button name="roles" id="displayRoles">Roles</button>
+				<button name="Users" id="displayUsers">Users</button>
+				</div>
+			<div class="rolesDisplay" id="rolesDisplay" style="display:none;">
+				<button class="roles" name="addRoles">Add</button>
+				<button class="roles" name="removeRoles">Remove</button>
+			</div>
+			<div class="userDisplay" id="userDisplay" style="display:none;">
+				<button name="addUser">Add</button>
+				<button name="removeUser">Remove</button>
+			</div>
+				<!--<h4 class="display-6">PIE-Product Insurance Expert</h1>
+				<p>From getting an insurance policy to amending your existing policies, from lodging a claim to understanding the whereabouts of insurance, a platform for all your needs. PIE is an insurance solution that helps you to take out an insurance policy for an hour to an year, at anything from anywhere and in less than 5 clicks.</p>
+				<!--<button class="btn btn-outline-success my-2 my-sm-0" name="launch" value="launchPie" onclick="launchPie()">Launch PIE Bot</button>-->
+				<!--<button class="launch" name="launch" value="launchPie" onclick="launchPie()"><b>Launch PIE Bot</b></button>-->
+				<!--<a class="button" style="color:#fff;" href="#" onclick="launchPie()">Launch PIE Bot</a>
+	
+			</div>
+			
+		</div>
+
+		<div class="container">
+			<!-- Example row of columns -->
+			<!--<div class="row">
+				<div class="col-md-4">
+					<h2>Insurance</h2>
+					<p>
+					Traveling abroad with a favourite or moved to new place and exploring interim insurance options, the PIE has the best of solutions for your insurance need that could be for a couple of hours to a week, month or a year.
+					</p>
+					<p id="text-to-display1" style="color:black;display:none;">Click a picture of the item and buy the insurance in less than 5 clicks.</p>
+					<p><a id="text-to-display1" class="btn btn-secondary" href="javascript:showText1();" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-md-4">
+					<h2>Support Services</h2>
+					<p>Looking to amend your current policy or have any clarifications on existing coverage, our assistance is available across the clock to support. Launch PIE assistance to initiate discussion and make changes to your policy.</p>
+					<p id="text-to-display2" style="color:black;display:none;">You can also reach out to us at +81 6667 1234 for any assistance.</p>
+					<p><a id="text-to-display2" class="btn btn-secondary" href="javascript:showText2();" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-md-4">
+					<h2>Our Offerings</h2>
+					<p>This is one stop platform for all of your episodic coverage needs, insure anything, any time for any duration in less than 5 clicks.</p>
+					<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+					
+					<a id="toggle" href="javascript:void(0);"><img src="assets/img/fav.png" style="height:50px;width:auto;float:right;"></a>
+					
+					</p>
+					
+				</div>
+				
+
+			
+			</div>
+			
+			<hr>
+
+		</div> <!-- /container -->
+
+	</main>
+
+	<footer class="container">
+		<p>&copy; User Data Store</p>
+	</footer> 
+
+	<div id="contentParent" class="responsive-columns-wrapper" style="display:none;">
+
+		<div id="chat-column-holder" class="responsive-column content-column">
+			<div class="chat-column">
+				<div id="scrollingChat">
+					<h4>Welcome to PIE-The piece of insurance choice</h4>
+					
+				</div>
+				
+				<label for="textInput" class="inputOutline">
+					<input id="textInput" class="input responsive-column" placeholder="Type something" type="text"
+						onkeydown="/*globals CanvasJS */
+				ConversationPanel.inputKeyDown(event, this)"><span class="fa fa-link errspan"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JavaScript
+		================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	
+	<script src="js/modal.js"></script>	
+	<script src="js/api.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/conversation.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="js/global.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+	
+	<script>
+		var config = {
+					apiKey: "AIzaSyBPK4c2UtGAAcEPYwvh1yWP643i9ffiOnM",
+					authDomain: "ductopro-1eb58.firebaseapp.com",
+					databaseURL: "https://ductopro-1eb58.firebaseio.com",
+					projectId: "ductopro-1eb58",
+					storageBucket: "ductopro-1eb58.appspot.com",
+					messagingSenderId: "876860474797"
+				};
+				firebase.initializeApp(config);
+	</script>
+	<script>
+		$(document).ready(function () {
+			$("#toggle").click(function () {
+				
+				$("#contentParent").toggle();
+			});
+		});
+	
+		/*function launchPie(){
+			//console.log("called launchPie");
+			var launchPie=0;
+			if(document.getElementById('contentParent').style.display=='none'){
+			document.getElementById('contentParent').style.display='block';
+			}
+			//$('#contentParent').toggle();
+		}*/
+		
+		$(window).on('load', function() {
+			console.log('All assets are loaded');
+			//console.log("Window open"+window.Count);
+			let usernameCloudant = "d639a1a8-b6fe-4622-a248-b07278e37dc4-bluemix"
+			let passwordCloudant = "a46931d00418ae4a7c06e1ec898c80a3575e5a264b40fa88f9ae03bcf89b504c"
+
+			const cloudantURL = new URL("https://" + usernameCloudant + ":" + passwordCloudant + "@" + usernameCloudant + ".cloudant.com");
+			console.log(window.location.href);
+			var getDocId=window.location.href.split("=");
+			console.log(getDocId[1]);
+			if(getDocId[1]){
+			document.getElementById("imageid").src="https://d639a1a8-b6fe-4622-a248-b07278e37dc4-bluemix.cloudant.com/customized-ui-access/"+getDocId[1]+"/themeFile";
+			}
+			else{
+			document.getElementById("imageid").src="assets/img/cg_ibm.png";
+			}
+
+			
+		});
+		let imageDatabase = "my-images"
+		let tagsDatabase = "my-image-tags"
+
+		let usernameCloudant = "d639a1a8-b6fe-4622-a248-b07278e37dc4-bluemix"
+		let passwordCloudant = "a46931d00418ae4a7c06e1ec898c80a3575e5a264b40fa88f9ae03bcf89b504c"
+
+		const cloudantURL = new URL("https://" + usernameCloudant + ":" + passwordCloudant + "@" + usernameCloudant + ".cloudant.com");
+		function showText1(){
+			document.getElementById('text-to-display1').style.display='block';
+		}
+		function showText2(){
+			document.getElementById('text-to-display2').style.display='block';
+		}
+		
+$("#displayRoles").click(function(){
+	
+	$("#rolesDisplay").toggle();
+});
+
+$('#displayUsers').click(function(){
+	$('#userDisplay').toggle();
+});
+		
+function effectiveDate(){
+ 
+	var effDate = document.getElementById("effDateTime");//.value;
+	event.keyCode = 13;
+	document.getElementById("effDateTime").innerHTML = effDate.value;
+	 ConversationPanel.inputKeyDown(event,effDate)
+}
+
+function expirationDate(){
+
+var effDate = document.getElementById("expiDate");//.value;
+	//var event = document.getElementById("effDateTime");
+	event.keyCode = 13;
+	 ConversationPanel.inputKeyDown(event,effDate);
+}
+function itemSelected(){
+	var selectedOption=document.getElementById('items').value;
+	console.log("Items Selected by User"+selectedOption);
+	event.keyCode=13;
+	event.type='click';
+	ConversationPanel.inputKeyDown(event,selectedOption);
+}
+
+function planSelectBasic(){
+
+var effDate = document.getElementById("BasicPackage");
+//event.keyCode = 13;
+console.log('########In Eff date#########');
+	console.log('effDate : ' + effDate);
+	console.log('effDate.value : ' + effDate.value);
+	console.log('event : ' + event);
+	console.log('event.value : ' + event.value);
+	event.keyCode = 13;
+	 ConversationPanel.inputKeyDown(event,effDate);
+	 }
+	 
+	 function planSelectVital(){
+
+var effDate = document.getElementById("VitalPackage");
+//event.keyCode = 13;
+console.log('########In Eff date#########');
+	console.log('effDate : ' + effDate);
+	console.log('effDate.value : ' + effDate.value);
+	console.log('event : ' + event);
+	console.log('event.value : ' + event.value);
+	event.keyCode = 13;
+	 ConversationPanel.inputKeyDown(event,effDate)
+	 }
+	 
+	 function planSelectOptimal(){
+
+var effDate = document.getElementById("OptimalPackage");
+//event.keyCode = 13;
+console.log('########In Eff date#########');
+	console.log('effDate : ' + effDate);
+	console.log('effDate.value : ' + effDate.value);
+	console.log('event : ' + event);
+	console.log('event.value : ' + event.value);
+	event.keyCode = 13;
+	 ConversationPanel.inputKeyDown(event,effDate)
+	 }
+function makePaymentMethod() {
+	var popup=window.open("./payment.html", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=250,left=250,width=500,height=500");
+	//popup.focus();
+	//console.log(localStorage.getItem('PaymentCompleted'));
+}
+function handleCallback(){
+	console.log("Handles the callback");
+	//event.type='click';
+	//event.keyCode=13;
+	//ConversationPanel.inputKeyDown(event,'Payment Confirmation');
+	var para = document.createElement("p");
+  para.setAttribute("id","watson");
+  //para.style="background-image:url('http://localhost:8080/img/fav.png');background-size: 30px 30px;background-repeat:no-repeat;";
+  //var node = document.createTextNode("Thanks for uploading the image. Our smart system says that it is a "+data.watsonResults[0].classes[0].class+"\n"+"Would you like to continue?");
+  var textToAppear="Payment is Successfull. Your Policy Number is 14000123"//\nIs this "+data.watsonResults[0].classes[0].class+"\n{{Yes}} {{No}}";
+  var node = document.createTextNode(textToAppear);
+  node.style="align: right;"
+  para.appendChild(node);
+  var element=document.getElementById("scrollingChat");
+  element.appendChild(para);
+	
+}
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+applications:
+- name: cutshort_userdata_test
+  random-route: true
+  memory: 64M
