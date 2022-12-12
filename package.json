@@ -16,7 +16,7 @@
     "cloudant": "^1.10.0-NOTICE",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-fileupload": "^1.1.6",
     "firebase": "^7.6.2",
     "formidable": "^1.2.1",
